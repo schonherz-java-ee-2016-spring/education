@@ -7,7 +7,19 @@ public class Ember {
   
   private String nev;
   private SzemSzin szemeSzine;
+  private static int szam;
   
+  static {
+    szam = 9;
+  }
+  
+  {
+    nev = "Zita";
+  }
+  
+  public class Pc {
+    String CPU;
+  }
   
   public Ember() {
     super();
@@ -37,6 +49,14 @@ public class Ember {
   
   public final void setSzemeSzine(SzemSzin szemeSzine) {
     this.szemeSzine = szemeSzine;
+  }
+
+  public static int getSzam() {
+    return szam;
+  }
+
+  public static void setSzam(int szam) {
+    Ember.szam = szam;
   }
   
   
