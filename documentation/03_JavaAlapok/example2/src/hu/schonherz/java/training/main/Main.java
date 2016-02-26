@@ -1,5 +1,12 @@
 package hu.schonherz.java.training.main;
 
+import java.util.List;
+
+import hu.schonherz.java.training.firereader.DeveloperReader;
+import hu.schonherz.java.training.firereader.EmployeeReader;
+import hu.schonherz.java.training.pojo.Developer;
+import hu.schonherz.java.training.pojo.Employee;
+
 public class Main {
 
   /*
@@ -9,10 +16,9 @@ public class Main {
    * 0) Create branch
    * 1) I/O
    *    a) Read employee from file
-   *    b) Read developers from file
-   *    c) Read from developers.txt
-   *    d) Write to developers.dat
-   *    e) Read from developers.dat
+   *    b) Read from developers.txt
+   *    c) Write to developers.dat
+   *    d) Read from developers.dat
    * 2) Threading 
    *    a) Create thread to read up employee and developers (ReaderThread)
    *    b) Play with synchronized
@@ -33,8 +39,29 @@ public class Main {
    */
   public static void main(String[] args) {
     
-    test();
+    List<Employee> employees = EmployeeReader.read();
+    for (Employee employee : employees) {
+      System.out.println(employee.getName() + " - " + employee.getEmployeeID());
+    }
     
+    List<Developer> developers = DeveloperReader.readFromTextFile();
+    for (Developer developer : developers) {
+      System.out.println(developer.getName() + " (" + developer.getEmployeeID() + ")");
+      for (String s : developer.getTasks()) {
+        System.out.println(s);
+      }
+    }
+    DeveloperReader.writeToBinaryFile(developers);
+    
+    System.out.println("---------------------------------------------");
+    
+    List<Developer> dev = DeveloperReader.readFromBinaryFile();
+    for (Developer developer : dev) {
+      System.out.println(developer.getName() + " (" + developer.getEmployeeID() + ")");
+      for (String s : developer.getTasks()) {
+        System.out.println(s);
+      }
+    }
   }
   
   private static void test() {

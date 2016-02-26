@@ -1,8 +1,10 @@
 package hu.schonherz.java.training.pojo;
 
+import java.io.Serializable;
 
-public class Employee {
+public class Employee implements Serializable {
 
+  private static final long serialVersionUID = 7950521176579703924L;
   protected String name;
   protected int employeeID;
   
