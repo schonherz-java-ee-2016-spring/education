@@ -9,6 +9,7 @@ import hu.schonherz.java.training.pojo.Employee;
 import hu.schonherz.java.training.thread.ReaderThread;
 import hu.schonherz.java.training.thread.SynchronizationTest;
 
+@SuppressWarnings("unused")
 public class Main {
 
   /*

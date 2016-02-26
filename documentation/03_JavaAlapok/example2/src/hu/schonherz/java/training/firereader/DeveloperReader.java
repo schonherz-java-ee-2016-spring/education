@@ -3,7 +3,6 @@ package hu.schonherz.java.training.firereader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,7 +24,9 @@ public class DeveloperReader {
 
   public static List<Developer> readFromTextFile() {
     List<Developer> result = new ArrayList<Developer>();
-    try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+    // Automatic resource management
+    // https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
+    try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
       String line;
       while((line = bufferedReader.readLine()) != null) {
         String[] attributes = line.split(",");
@@ -45,7 +46,6 @@ public class DeveloperReader {
     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(binaryFile));) {
       oos.writeObject(developers);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
     
@@ -55,17 +55,14 @@ public class DeveloperReader {
   public static List<Developer> readFromBinaryFile() {
     List<Developer> result = new ArrayList<Developer>();
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(binaryFile))) {
-      Object o = ois.readObject();
-      /*if (o instanceof ArrayList<?>) {
+      /*Object o = ois.readObject();
+        if (o instanceof ArrayList<?>) {
         result = (List<Developer>) o;
       }*/
-      result = (List<Developer>) o;
-      
+      result = (List<Developer>) ois.readObject();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
     return result;

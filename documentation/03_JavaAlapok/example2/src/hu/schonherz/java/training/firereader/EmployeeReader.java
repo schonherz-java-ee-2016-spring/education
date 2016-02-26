@@ -14,14 +14,14 @@ public class EmployeeReader {
   private static final String SUBDIRECTORY = "files";
   private static final String FILENAME = "employees.txt";
   
-  //Will it works under Linux?                       　　
+  //Will it works under Linux?                         　　
+  //private static File file = new File(SUBDIRECTORY + "\\" + FILENAME);
   private static File file = new File(SUBDIRECTORY + File.separator + FILENAME);
   
   /**
    * @return List of employees which has been found in employees.txt file
    */
   public static List<Employee> read() {
-    // Hint: BufferedReader usage
     List<Employee> result = new LinkedList<Employee>();
     /*
      * Alternative solution

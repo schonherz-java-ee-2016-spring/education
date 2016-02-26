@@ -15,7 +15,7 @@ public class SynchronizationTest extends Thread {
   public void run() {
     int i = 0;
     synchronized (synchronizedObject) { // Only one thread can run this block
-                                        // In this case the Thread2 won't run till Thread1 finish the "while"
+                                        // In this case the Thread2 won't run till Thread1 will finished the "while"
       while(i < 5) {
         i++;
         //synchronized(synchronizedObject) { // Only one thread can run this block
