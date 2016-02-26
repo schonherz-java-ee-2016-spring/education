@@ -14,9 +14,15 @@ public class SynchronizationTest extends Thread {
   @Override
   public void run() {
     int i = 0;
-    while(i < 5) {
-      i++;  
-      System.out.println(number + " - " + synchronizedObject.getNum());
+    synchronized (synchronizedObject) { // Only one thread can run this block
+                                        // In this case the Thread2 won't run till Thread1 finish the "while"
+      while(i < 5) {
+        i++;
+        //synchronized(synchronizedObject) { // Only one thread can run this block
+                                             // Thread2 can run it while Thread1 execute other part of while
+          System.out.println(number + " - " + synchronizedObject.getNum());
+        //}
+      }
     }
   }
   

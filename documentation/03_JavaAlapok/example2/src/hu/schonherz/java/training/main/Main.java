@@ -6,6 +6,8 @@ import hu.schonherz.java.training.firereader.DeveloperReader;
 import hu.schonherz.java.training.firereader.EmployeeReader;
 import hu.schonherz.java.training.pojo.Developer;
 import hu.schonherz.java.training.pojo.Employee;
+import hu.schonherz.java.training.thread.ReaderThread;
+import hu.schonherz.java.training.thread.SynchronizationTest;
 
 public class Main {
 
@@ -20,7 +22,7 @@ public class Main {
    *    c) Write to developers.dat
    *    d) Read from developers.dat
    * 2) Threading 
-   *    a) Create thread to read up employee and developers (ReaderThread)
+   *    a) Create thread to read up employee (ReaderThread)
    *    b) Play with synchronized
    * 3) Exceptions
    * 
@@ -38,7 +40,15 @@ public class Main {
    * 5) Homework
    */
   public static void main(String[] args) {
+    synchroniedTest();
     
+  }
+  
+  private static void test() {
+    System.out.println("kis kacsa");
+  }
+  
+  private static void ioHandling() {
     List<Employee> employees = EmployeeReader.read();
     for (Employee employee : employees) {
       System.out.println(employee.getName() + " - " + employee.getEmployeeID());
@@ -64,8 +74,32 @@ public class Main {
     }
   }
   
-  private static void test() {
-    System.out.println("kis kacsa");
+  private static void threading() {
+    ReaderThread readerThread = new ReaderThread();
+    //System.out.println(readerThread.getState());
+    readerThread.start();
+    /*try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }*/
+    System.out.println(readerThread.getState());
+    try {
+      readerThread.join();
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    test();
+  }
+  
+  public static void synchroniedTest() {
+    SynchronizationTest st1 = new SynchronizationTest(1);
+    SynchronizationTest st2 = new SynchronizationTest(2);
+    
+    st1.start();
+    st2.start();
   }
   
   /*
