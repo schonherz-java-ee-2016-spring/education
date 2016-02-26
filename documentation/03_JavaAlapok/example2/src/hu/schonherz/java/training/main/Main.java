@@ -42,7 +42,8 @@ public class Main {
   }
   
   /*
-   * 
+   * As a manager of the company, I want a real-time report for those servers, which are not running.
+   * The report should tell that which system administrator have right for those servers. 
    */
   private static void homework() {
     // TODO unimplemented method
