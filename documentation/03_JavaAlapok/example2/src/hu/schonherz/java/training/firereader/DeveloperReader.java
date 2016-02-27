@@ -22,6 +22,8 @@ public class DeveloperReader {
   private static File file = new File(SUBDIRECTORY + File.separator + FILENAME);
   private static File binaryFile = new File(SUBDIRECTORY + File.separator + BINARYFILE);
 
+  //public static List<Developer> readFromTextFile() throws FileNotFoundException, IOException {
+  //public static List<Developer> readFromTextFile() throws NumberFormatException {
   public static List<Developer> readFromTextFile() {
     List<Developer> result = new ArrayList<Developer>();
     // Automatic resource management
@@ -36,12 +38,18 @@ public class DeveloperReader {
         }
         result.add(new Developer(attributes[0], Integer.parseInt(attributes[1]), tasks));
       }
-    } catch (IOException e) {
+    // pokemon exception handling
+    /*} catch (Exception e) {
+      System.out.println("Exception!!!");
+    } catch (NumberFormatException e) {
+      System.out.println("There is no int in 2nd parameter");
+    */} catch (IOException e) {
       System.out.println("io error");
     }
     return result;
   }
   
+  @Deprecated
   public static void writeToBinaryFile(List<Developer> developers) {
     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(binaryFile));) {
       oos.writeObject(developers);

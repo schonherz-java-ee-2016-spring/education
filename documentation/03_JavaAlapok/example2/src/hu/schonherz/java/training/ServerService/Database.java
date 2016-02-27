@@ -8,12 +8,14 @@ public interface Database {
    * Tell the status of Database
    * @return String of status of Database
    */
-  public String getStatus();
+  public abstract String getStatus();
   
   /**
    * Tell the URL connection of the Database
    * @return Sting of URL connection to the Database
    */
-  public String getConnectionURL();
+  default String getConnectionURL() {
+    return "localhost:98765";
+  }
   
 }

@@ -29,18 +29,30 @@ public class EmployeeReader {
     while(sc.hasNext()) {
       
     }*/
+    BufferedReader bufferedReader = null;
     try {
-      BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+      bufferedReader = new BufferedReader(new FileReader(file));
       String line;
       while((line = bufferedReader.readLine()) != null) {
         String[] attributes = line.split(",");
+        if (attributes.length < 2) {
+          throw new MyException();
+        }
         Employee employee = new Employee(attributes[0], Integer.parseInt(attributes[1]));
         result.add(employee);
       }
-      bufferedReader.close();
-      
     } catch (IOException e) {
       System.out.println("File is not found");
+    } catch (MyException e) {
+      System.out.println("File is corruptd");
+    } finally {
+      if (bufferedReader != null) {
+        try {
+          bufferedReader.close();
+        } catch (IOException e) {
+          System.out.println("BufferedReader was not closed");
+        }
+      }
     }
     return result;
   }

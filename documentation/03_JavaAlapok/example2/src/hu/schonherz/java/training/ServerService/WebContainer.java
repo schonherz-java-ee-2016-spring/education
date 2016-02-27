@@ -14,17 +14,17 @@ public interface WebContainer {
   /**
    * Start the stopped Web container
    */
-  public void StartWebContainer();
+  public void startWebContainer();
   
   /**
    * Stop the running Web container
    */
-  public void StopWebContainer();
+  public void stopWebContainer();
   
   /**
    * Stop the Web container if it is running
    * and start it
    */
-  public void RestartWebContainer();
+  public void restartWebContainer();
   
 }

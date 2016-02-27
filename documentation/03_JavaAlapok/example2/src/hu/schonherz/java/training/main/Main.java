@@ -1,11 +1,18 @@
 package hu.schonherz.java.training.main;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import hu.schonherz.java.training.ServerService.Database.Status;
 import hu.schonherz.java.training.firereader.DeveloperReader;
 import hu.schonherz.java.training.firereader.EmployeeReader;
 import hu.schonherz.java.training.pojo.Developer;
 import hu.schonherz.java.training.pojo.Employee;
+import hu.schonherz.java.training.server.Server;
+import hu.schonherz.java.training.server.WindowsServer;
 import hu.schonherz.java.training.thread.ReaderThread;
 import hu.schonherz.java.training.thread.SynchronizationTest;
 
@@ -41,8 +48,56 @@ public class Main {
    * 5) Homework
    */
   public static void main(String[] args) {
-    synchroniedTest();
+    /*Status status = Status.RUNNING;
+    System.out.println(status.name());
+    System.out.println(status.toString());
+    Developer dev = new Developer();
+    System.out.println(dev.toString());
+    */
+    /*synchroniedTest();
+    Server ws = new WindowsServer();*/
+    /*
+    // Map is a generic what has two type parameter
+    Map<Integer, String> map = new HashMap<>();
+    map.put(1, "egy");
+    map.put(2, "ketto");
+    System.out.println(map.get(2));
     
+    Number n = new Integer(0);
+    List<? extends Number> numbers = new ArrayList<Integer>();
+    List<? super Integer> ints = new ArrayList<Number>();
+    */
+    
+    List<Developer> dev = DeveloperReader.readFromBinaryFile();
+    for (Developer developer : dev) {
+      System.out.println(developer.getName() + " (" + developer.getEmployeeID() + ")");
+      for (String s : developer.getTasks()) {
+        System.out.println(s);
+      }
+    }
+    System.out.println("------------------------------");
+    
+    // Lamda expression
+    List<Developer> devs = DeveloperReader.readFromTextFile();
+    devs.forEach(d -> {
+      System.out.println(d.getName() + "(" + d.getEmployeeID() + ")");
+      d.getTasks().forEach(t -> {
+        System.out.println(t);
+      });
+    });
+    //devs.forEach(System.out::println);
+    
+    List<Employee> e1 = new LinkedList<Employee>();
+    List<Employee> e2 = new ArrayList<Employee>();
+    
+  }
+  
+  // what happen inside of the forEach - Each dev will be the parameter of this method
+  public void lamda(Developer d) {
+    System.out.println(d.getName() + "(" + d.getEmployeeID() + ")");
+    d.getTasks().forEach(t -> {
+      System.out.println(t);
+    });
   }
   
   private static void test() {
@@ -104,8 +159,27 @@ public class Main {
   }
   
   /*
-   * As a manager of the company, I want a real-time report for those servers, which are not running.
-   * The report should tell that which system administrator have right for those servers. 
+   * As a manager of the organization, I want a real-time report for those servers, which are not running.
+   * The report should tell that which system administrators have right for those servers.
+   * 
+   *  -----------------------------
+   *  real-time report: continuously while the program is running (every 10 sec)
+   *  report: Write out on console. Format: serverName (what is not running) and the list of administrators' name
+   *  servers: servers.txt contains them: 
+   *    1) ID of server
+   *    2) Name of server
+   *    3) type
+   *    4) status of server (RUNNING, STOPPED)
+   *  system administrators: sysadmins.txt
+   *    1) Name
+   *    2) EmployeeID
+   *    3 (rest): Id of servers for he/she has right.
+   *  
+   *  NOTE: Should be in separate project or you can write the code here, as you prefer
+   *        If you finished it, please put the project folder into homework repository under your subfolder (your name)
+   *        !!!And Push it!!!
+   *        deadline: marc. 4. 14:00
+   *  TEST: If the servers.txt has been changed then it will be presented by the report
    */
   private static void homework() {
     // TODO unimplemented method
