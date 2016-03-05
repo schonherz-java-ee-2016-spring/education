@@ -1,0 +1,24 @@
+Házi Feladat
+
+1.
+
+1 DB tervezési minta implementálása típusonként:
+1 DB tervezési minta (kivéve Singleton)
+1 DB strukturális minta
+1 DB viselkedési minta
+Összesen 3DB.
+
+2.
+
+Multi module projekt Maven használatával, 1-1 minta 1-1 modul legyen és egy szülo modulban legyenek összefogva
+
+3. Unit tesztek
+
+4. Site generálása, tetszoleges számú plugin-ekkel
+
+Megoldási javaslat:
+
+1. Maven-es modulok létrehozása, multi module kialakítása
+2. A konkrét minták implementálása
+3. Unit tesztek írása
+4. Site generálás
