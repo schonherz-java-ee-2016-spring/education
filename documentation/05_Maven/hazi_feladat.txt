@@ -22,3 +22,5 @@ Megoldási javaslat:
 2. A konkrét minták implementálása
 3. Unit tesztek írása
 4. Site generálás
+
+2016.03.14.-15.
