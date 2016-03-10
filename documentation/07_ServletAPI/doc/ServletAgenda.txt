@@ -1,0 +1,39 @@
+Tomcat:
+Install
+How to deploy war
+	manager
+	file copy
+Add tomcat to Eclipse
+
+Servlet:
+Create a new Maven project (webapp)
+New servlet
+	http://mvnrepository.com/artifact/javax.servlet/servlet-api/2.5
+Add contributers (for)
+Add coments + form
+	action='Hello' method='POST'
+Multi line comment
+Hack the system
+	StringEscapeUtils: http://mvnrepository.com/artifact/commons-lang/commons-lang/2.6
+Comment -> pojo
+Put comments into session
+	attribure name -> constant
+	play with two differnt browser.
+Redirect
+
+JSP:
+Hello JSP (index.jsp link)
+Add contributers (for)
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		http://mvnrepository.com/artifact/jstl/jstl/1.2
+	pageContext.setAttribute()
+	ContributorsBean + c:forEach
+CommentsBean
+
+Form & Validation:
+
+Listeners:
+https://docs.oracle.com/cd/E11035_01/wls100/webapp/app_events.html
+
+Filter:
+http://www.tutorialspoint.com/servlets/servlets-writing-filters.htm	
