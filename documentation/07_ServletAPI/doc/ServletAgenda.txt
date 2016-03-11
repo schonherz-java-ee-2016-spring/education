@@ -29,6 +29,7 @@ Add contributers (for)
 	pageContext.setAttribute()
 	ContributorsBean + c:forEach
 CommentsBean
+	bean scopes
 
 Form & Validation:
 
