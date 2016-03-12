@@ -71,7 +71,9 @@
 	<h2>You can add a new comment:</h2>
 	<!-- The form will post to HelloJsp.jsp 
 	<form action="HelloJsp.jsp" method="post">-->
-	<!-- The form will be post to HelloJSPAction servlet (../ because we stay in jsp "folder")-->
+	<!-- The form will be post to HelloJSPAction servlet 
+		 ${pageContext.request.contextPath} -> http://localhost:8080/servlet
+	-->
 	<form action="${pageContext.request.contextPath}/HelloJSPAction" method="post">
 		<input type="hidden" name="<%=NAME%>" value="<%=request.getParameter("name")%>">
 		<textarea rows="2" cols="50" name="<%=NEWCOMMENT%>"></textarea>
