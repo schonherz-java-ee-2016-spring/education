@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
@@ -23,9 +24,10 @@ public class HelloServlet extends HttpServlet {
 	// Constants help for avoid typos, and make refactor easier
 	private static final String NEWCOMMENT = "newcomment";
 	private static final String NAME = "name";
+	private static final String COMMENTS = "comments";
 	
 	private String[] contributors = {"Kiss Aladár", "Nagy Béla"};
-	private CommentsBean commentsBean = new CommentsBean();
+	private CommentsBean commentsBean; //= new CommentsBean();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,8 +43,15 @@ public class HelloServlet extends HttpServlet {
   // Handle GET requests
 	@Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  // redirect the browser to URL
+	  //response.sendRedirect("http://www.google.com");
 	  
-	  //request.getSession(arg0)
+	  // parameter: true to create a new session for this request if necessary; false to return null if there's no current session 
+	  HttpSession session = request.getSession(true);
+	  if (session.getAttribute(COMMENTS) == null) {
+	    session.setAttribute(COMMENTS, new CommentsBean());
+	  }
+	  commentsBean = (CommentsBean) session.getAttribute(COMMENTS);
 	  
 	  // Read value of "name" request parameter (?name=value)
 	  String name = (request.getParameter(NAME) != null ? request.getParameter(NAME) : "Servlet");
@@ -89,6 +98,14 @@ public class HelloServlet extends HttpServlet {
 	@Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> comments;
+		HttpSession session = request.getSession(true);
+		// If comments are not exist in session, then create a new one
+		if (session.getAttribute(COMMENTS) == null) {
+		  this.commentsBean = new CommentsBean();
+		// Use the exits comments form session
+		} else {
+		  this.commentsBean = (CommentsBean) session.getAttribute(COMMENTS);
+		}
 		// If comments in commentsBean is null then local comments will be a new list 
 	  if (this.commentsBean.getComments() == null) {
 		  comments = new ArrayList<String>();
@@ -101,6 +118,7 @@ public class HelloServlet extends HttpServlet {
 		// Replace special characters (like: <, >) to an escaped charters
 		comments.add(StringEscapeUtils.escapeHtml(request.getParameter(NEWCOMMENT)));
 		this.commentsBean.setComments(comments);
+		session.setAttribute(COMMENTS, this.commentsBean);
 		for (String string : comments) {
       System.out.println(string);
     }
