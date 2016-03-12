@@ -1,0 +1,23 @@
+Blog application: 
+Új maven project a homework/{név}/{projectnév} mappában
+Blog:
+	- id
+	- címe
+	- szövege
+	- (application scope -> minden user ugyanazokat látja)
+Megj: Nem kell se file-ba se SQL-be lementeni, viszont application scope miatt amíg a tomcat fut addig benn lesznek a memóriában.
+Oldalak:
+	- Index: Itt vannak a blogok felsorolva (csak címük)
+	- Details: Itt egy blognak az címe és a szövege is (ID alapján ki kell tudni kereseni a blog listából)
+	- NewBlog:	meg lehet adni a címet és a szöveget. És miután elposztolta megjelenik az indexen az új is.
+		- opcionális: vissza megy az indexre
+Design: Opcionális, de azért NA!
+Java VS JSP: teszés szerint, akár vegyesen is.
+
+Komment: legyen (nem fontos minde sorhoz, de legalább látszódjon, hogy x soron keresztül mit akartatok csinálni)
+JavaDoc: Jó ha van.
+
+Ha kérdés van: szólj!
+Ha kész vagy (idõ elõtt is akár): Szólj! :)
+
+Határidõ: 2016.03.18 14:00
