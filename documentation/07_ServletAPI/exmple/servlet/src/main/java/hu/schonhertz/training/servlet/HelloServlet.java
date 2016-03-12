@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+import hu.sconhertz.training.beans.CommentsBean;
+
 /**
  * Servlet implementation class HelloServlet
  */
@@ -23,7 +25,7 @@ public class HelloServlet extends HttpServlet {
 	private static final String NAME = "name";
 	
 	private String[] contributors = {"Kiss Aladár", "Nagy Béla"};
-	private List<String> comments;
+	private CommentsBean commentsBean = new CommentsBean();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,15 +41,18 @@ public class HelloServlet extends HttpServlet {
   // Handle GET requests
 	@Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  
+	  //request.getSession(arg0)
+	  
 	  // Read value of "name" request parameter (?name=value)
 	  String name = (request.getParameter(NAME) != null ? request.getParameter(NAME) : "Servlet");
 	  // response.getWriter() this will be written into body.
 		PrintWriter out = response.getWriter();
 		out.append("<h1>Hello " + name + "!</h1>");
 		
-		if(this.comments != null) {
+		if(this.commentsBean.getComments() != null) {
 		  // if there are comments then those will be shown
-  		for (String comment : comments) {
+  		for (String comment : commentsBean.getComments()) {
         out.append("<div style='border: solid 1px;'>" + comment.replace("\n", "<br/>") + "</div>");
       }
 		} else {
@@ -83,13 +88,19 @@ public class HelloServlet extends HttpServlet {
 	// Handle POST requests
 	@Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (this.comments == null) {
-		  this.comments = new ArrayList<String>();
+		List<String> comments;
+		// If comments in commentsBean is null then local comments will be a new list 
+	  if (this.commentsBean.getComments() == null) {
+		  comments = new ArrayList<String>();
+		// Else, the local comment will be the already exist comments from commentsBean
+		} else {
+		  comments = commentsBean.getComments();
 		}
 		//System.out.println(request.getParameter(NEWCOMMENT));
 		//System.out.println(StringEscapeUtils.escapeHtml(request.getParameter(NEWCOMMENT)));
 		// Replace special characters (like: <, >) to an escaped charters
-		this.comments.add(StringEscapeUtils.escapeHtml(request.getParameter(NEWCOMMENT)));
+		comments.add(StringEscapeUtils.escapeHtml(request.getParameter(NEWCOMMENT)));
+		this.commentsBean.setComments(comments);
 		for (String string : comments) {
       System.out.println(string);
     }
