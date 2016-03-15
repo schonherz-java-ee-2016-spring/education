@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>BlogsServlet</servlet-name>
+  	<display-name>BlogsServlet</display-name>
+  	<description></description>
+  	<servlet-class>hu.schonhertz.training.servlet.BlogsServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BlogDetailServlet</servlet-name>
+  	<display-name>BlogDetailServlet</display-name>
+  	<description></description>
+  	<servlet-class>hu.schonhertz.training.servlet.BlogDetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BlogPosterServlet</servlet-name>
+  	<display-name>BlogPosterServlet</display-name>
+  	<description></description>
+  	<servlet-class>hu.schonhertz.training.servlet.BlogPosterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BlogsServlet</servlet-name>
+  	<url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BlogDetailServlet</servlet-name>
+  	<url-pattern>/blog</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BlogPosterServlet</servlet-name>
+  	<url-pattern>/newblog</url-pattern>
+  </servlet-mapping>
+</web-app>
