@@ -1,0 +1,16 @@
+Run physical script
+
+Run nonspring on server
+
+Install SpringIDE
+	https://marketplace.eclipse.org/content/spring-ide
+	
+Spring dependency
+	http://mvnrepository.com/artifact/org.springframework/spring-jdbc/4.2.5.RELEASE
+	
+spring jdbc
+	Mapper implements RowMapper
+	Template implements dao
+		DataSource
+		JdbcTemplate
+bean 
