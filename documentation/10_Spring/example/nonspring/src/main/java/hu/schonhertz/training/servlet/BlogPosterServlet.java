@@ -25,7 +25,6 @@ public class BlogPosterServlet extends HttpServlet {
 	private static final String TEXT = "text";
 	private static final String ERRORS = "errors";
 	
-	private Map<String, String> errors;
 	private BlogDao blogDao;
        
     /**
@@ -33,7 +32,6 @@ public class BlogPosterServlet extends HttpServlet {
      */
     public BlogPosterServlet() {
         super();
-        errors = new HashMap<>();
         blogDao = new BlogDaoImpl();
     }
 
@@ -44,7 +42,11 @@ public class BlogPosterServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  // Initializing
 	  PrintWriter out = response.getWriter();
-	  
+	  @SuppressWarnings("unchecked")
+    Map<String, String> errors = (request.getAttribute(ERRORS) != null ? (HashMap<String, String>) request.getAttribute(ERRORS) : new HashMap<>());
+
+    // title of the page
+    out.println("<title>Nospring Post A New Blog</title>");
 	  // import boostrap.min.css
     out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" >");
     
@@ -94,7 +96,7 @@ public class BlogPosterServlet extends HttpServlet {
 	  String creator = request.getParameter(CREATOR);
 		String title = request.getParameter(TITLE);
 		String text = request.getParameter(TEXT);
-		errors = new HashMap<>();
+		Map<String, String> errors = new HashMap<>();
 		
 		// Validation of creator
 		if (creator.equals("")) {

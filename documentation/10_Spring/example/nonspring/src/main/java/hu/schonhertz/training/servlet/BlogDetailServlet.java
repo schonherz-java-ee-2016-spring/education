@@ -51,7 +51,9 @@ public class BlogDetailServlet extends HttpServlet {
 	  blog = blogDao.getBlog(id);
 	  comments = commentDao.getAllCommentsByBlogId(id);
 	  PrintWriter out = response.getWriter();
-    
+
+    // title of the page
+    out.println("<title>Nospring Blog Details</title>");
 	  // import boostrap.min.css
     out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" >");
     
