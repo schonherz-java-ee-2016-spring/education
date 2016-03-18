@@ -1,4 +1,4 @@
-T�bl�k:
+﻿Táblák:
 1) User
 	id (PK)
 	name
@@ -12,8 +12,19 @@ T�bl�k:
 	
 Feladat:
 
-SQL (lehet pgAdmin-nal, de a v�g�n egy-egy sql scriptet kell beadni)
-1) A fenti t�bl�k l�trhoz�sa �s a Physical.sql script l�trehoz�sa. (phyisical script: DDL utas�t�sokat tartalmaz, magyar�n ez hozza l�tre a db szerkezet�t)
-2) 2 User �s 3 Product felt�lt�se �s ezek egy Filler.sql f�jlba felt�ntetni. (filler script: az alap adatok felt�lt�s�re szolg�l)
+SQL (lehet pgAdmin-nal, de a végén egy-egy sql scriptet kell beadni)
+1) A fenti táblák létrhozása és a Physical.sql script létrehozása. (phyisical script: DDL utasításokat tartalmaz, magyarán ez hozza létre a db szerkezetét)
+2) 2 User és 3 Product feltöltése és ezek egy Filler.sql fájlba feltüntetni. (filler script: az alap adatok feltöltésére szolgál)
 
 JDBC
+
+0) Adatbáziskapcsolat kiépítése, pár metaadat lekérdezése (Táblák nevei, oszlopai)
+1) DAO implementálása (Interface,Impl) - (Táblák INSERT,UPDATE,DELETE funkciói) - pl.: addUser,updateUser,deleteUser,...
+2) Lekérdezések:
+   a) Egy adott felhasználó rendeléseinek lekérdezése (PreparedStatement)
+   b) Felhasználók lekérdezése (CallableStatement)
+   c) Termékek lekérdezése (CallableStatement)
+   d) Rendelések lekérdezése (Statement)
+   
+3) Termékek kötegelt beszúrása tetszőleges számban (azért több mint 5) és tetszőleges kötegméretben (azért nagyobb mint 1)
+4) Termékek kötegelt törlése tetszőleges számban és tetszőleges kötegméretben (azért nagyobb mint 1)
