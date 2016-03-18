@@ -2,15 +2,48 @@ Run physical script
 
 Run nonspring on server
 
+	
+Spring dependency
+	http://mvnrepository.com/artifact/org.springframework/spring-webmvc/4.2.5.RELEASE
+
+-------------------------------
+
 Install SpringIDE
 	https://marketplace.eclipse.org/content/spring-ide
 	
-Spring dependency
+Add spring jdbc dependency
 	http://mvnrepository.com/artifact/org.springframework/spring-jdbc/4.2.5.RELEASE
+Add postgreSQL dependency
+	http://mvnrepository.com/artifact/org.postgresql/postgresql/9.4.1208
+
+Create dataSource bean
+	DriverManagerDataSource
+	driverClassName - org.postgresql.Driver
+	url - jdbc:postgresql://localhost:5432/Blog
+	username - postgres
+	password - postgre
+
+Create Beans (copy valid)
+	Blog
+	Comment
+
+Create DAO Interfaces (copy valid)
+	BlogDao
+	CommentDao
+
+Create Mappers
+	implements RowMapper
+	BlogMapper
+	CommentMapper
 	
-spring jdbc
-	Mapper implements RowMapper
-	Template implements dao
-		DataSource
-		JdbcTemplate
-bean 
+JDBCTemplates implementation
+	Update DAOs
+		setDataSource
+	BlogJDBCTemplate (query copy is valid)
+		private DataSource dataSource;
+		private JdbcTemplate jdbcTemplateObject;
+	CommentJDBCTemplate (query copy is valid)
+		private DataSource dataSource;
+		private JdbcTemplate jdbcTemplateObject;
+		
+add JDBCTemplates beans to SpringBlog-servlet.xml
