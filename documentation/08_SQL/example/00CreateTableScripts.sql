@@ -1,12 +1,3 @@
-CREATE TABLE public."Emails"
-(
-  "employeeId" integer,
-  email character varying(50),
-  CONSTRAINT "Emails_employId_fkey" FOREIGN KEY ("employeeId")
-      REFERENCES public."Employee" (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-);
-
 CREATE SEQUENCE public."Employee_id_seq"
   INCREMENT 2
   MINVALUE 1
@@ -30,4 +21,13 @@ CREATE TABLE public."PhoneNumbers"
   CONSTRAINT "PhoneNumbers_employId_fkey" FOREIGN KEY ("employeeId")
       REFERENCES public."Employee" (id) MATCH SIMPLE
       ON UPDATE CASCADE ON DELETE CASCADE
-)
+);
+
+CREATE TABLE public."Emails"
+(
+  "employeeId" integer,
+  email character varying(50),
+  CONSTRAINT "Emails_employId_fkey" FOREIGN KEY ("employeeId")
+      REFERENCES public."Employee" (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
