@@ -15,7 +15,7 @@ Feladat:
 SQL (lehet pgAdmin-nal, de a végén egy-egy sql scriptet kell beadni)
 1) A fenti táblák létrhozása és a Physical.sql script létrehozása. (phyisical script: DDL utasításokat tartalmaz, magyarán ez hozza létre a db szerkezetét)
 	-- note: a sequence-ek ne maradjanak ki
-2) 2 User és 3 Product feltöltése és ezek egy Filler.sql fájlba feltüntetni. (filler script: az alap adatok feltöltésére szolgál)
+2) 2 User, 3 Product és 5 Order feltöltése és ezek egy Filler.sql fájlba feltüntetni. (filler script: az alap adatok feltöltésére szolgál)
 
 JDBC
 
@@ -29,3 +29,5 @@ JDBC
    
 3) Termékek kötegelt beszúrása tetszőleges számban (azért több mint 5) és tetszőleges kötegméretben (azért nagyobb mint 1)
 4) Termékek kötegelt törlése tetszőleges számban és tetszőleges kötegméretben (azért nagyobb mint 1)
+
+Határidő: 2016.03.27 23:59

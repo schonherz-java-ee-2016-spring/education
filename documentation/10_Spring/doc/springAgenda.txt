@@ -2,7 +2,6 @@ Run physical script
 
 Run nonspring on server
 
-	
 Spring dependency
 	http://mvnrepository.com/artifact/org.springframework/spring-webmvc/4.2.5.RELEASE
 
@@ -15,15 +14,17 @@ Add spring jdbc dependency
 	http://mvnrepository.com/artifact/org.springframework/spring-jdbc/4.2.5.RELEASE
 Add postgreSQL dependency
 	http://mvnrepository.com/artifact/org.postgresql/postgresql/9.4.1208
+	
+--------------------------------
 
-Create dataSource bean
+Create dataSource bean in SpringBlog-servlet.xml
 	DriverManagerDataSource
 	driverClassName - org.postgresql.Driver
 	url - jdbc:postgresql://localhost:5432/Blog
 	username - postgres
 	password - postgre
 
-Create Beans (copy valid)
+Create POJOS (copy valid)
 	Blog
 	Comment
 
@@ -47,3 +48,31 @@ JDBCTemplates implementation
 		private JdbcTemplate jdbcTemplateObject;
 		
 add JDBCTemplates beans to SpringBlog-servlet.xml
+
+--------------------------------
+
+Add BlogController
+	@Autowired jdbcTemplate
+	listAllBlog method
+		+ Create JSP 
+			Add JSTL dependency	http://mvnrepository.com/artifact/jstl/jstl/1.2
+
+	blogDetails method
+		/ details + @RequestParam
+		+ Create JSP
+		/{id} + v
+Add CommentController
+	addComment method
+		@ModelAttribute
+		sysout
+		redirect
+	blog/details.jsp
+		<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+		form létrehozása
+	BlogController blogDetails
+		 ModelAndView("blog/details", "command", new Comment())
+	addComment
+		call CommentJDBCTemplate
+
+>>>>>>>>>>>
+new blog view + controller
