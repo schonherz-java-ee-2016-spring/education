@@ -9,13 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${blogs}" var="blog">
-	<div>
-		<a href="blog/details/${blog.id}">
-			${blog.title}
-		</a>
-		
-	</div>
-</c:forEach>
+<div>
+	Title: ${blog.title} 
+</div>
+<div>
+	Creator: ${blog.creator}
+</div>
+<div>
+	Text:
+	<pre>
+		${blog.text}
+	</pre>
+</div>
 </body>
 </html>
