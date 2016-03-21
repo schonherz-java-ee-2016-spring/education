@@ -13,12 +13,18 @@ import hu.schonhertz.training.pojo.Blog;
 
 public class BlogJDBCTemplate implements BlogDao {
   
-  private DataSource dataSource;
+  // The dataSource is just a dependency for jdbcTemplate, in this code we do not use it for other
+  //private DataSource dataSource;
   private JdbcTemplate jdbcTemplate;
   
-  public void setDataSource(DataSource dataSource) {
+  // The dependency of jdbcTemplate is definied in SpringBlog-servlet.xml 
+  /*public void setDataSource(DataSource dataSource) {
     this.dataSource = dataSource;
     jdbcTemplate = new JdbcTemplate(this.dataSource);
+  }*/
+  
+  public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
   }
 
   @Override
