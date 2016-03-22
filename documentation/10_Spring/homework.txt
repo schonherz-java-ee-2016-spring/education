@@ -1,0 +1,12 @@
+Adatbázis: lásd JDBC házi
+
+Feladat: Spring-gel
+	- User
+		- view összes user listája
+		- view add new user
+	- Product
+		- view lista 
+		- add new product
+	- New order (user kiválasztása és product kiválasztása)
+	
+Határidõ: 2016.03.29 23:59
