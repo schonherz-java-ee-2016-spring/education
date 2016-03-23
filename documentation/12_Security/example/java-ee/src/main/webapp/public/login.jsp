@@ -5,7 +5,7 @@
 <body bgcolor="#ffffff">
 	<form method="POST" action="j_security_check">
 		<c:if test="${param.error}">
-		<font color="red">Hibás felhasználóném vagy jelszó!</font>
+		<font color="red">Hibás felhasználónév vagy jelszó!</font>
 		</c:if>
 	
 		<table>

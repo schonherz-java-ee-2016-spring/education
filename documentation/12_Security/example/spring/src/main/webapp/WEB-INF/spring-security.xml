@@ -20,8 +20,8 @@
 			username-parameter="j_username" password-parameter="j_password" />
 		<security:logout logout-url="/logout"
 			logout-success-url="/index.jsp" />
-		<security:remember-me key="key"
-			remember-me-parameter="remember-me" token-validity-seconds="86400" />
+		<security:remember-me remember-me-parameter="remember-me"
+			token-validity-seconds="86400" />
 	</security:http>
 
 	<security:authentication-manager>

@@ -36,7 +36,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Admin Content</web-resource-name>
-			<url-pattern>/secured/admin/*</url-pattern>
+			<url-pattern>/secured/admin/*</url-pattern>		
 		</web-resource-collection>
 		<auth-constraint>
 			<description>Only amdin role</description>
@@ -59,19 +59,19 @@
 		<role-name>user</role-name>
 	</security-role>
 
-<!-- 	<login-config> -->
-<!-- 		<auth-method>FORM</auth-method> -->
-<!-- 		<realm-name>CustomRealm</realm-name> -->
-<!-- 		<form-login-config> -->
-<!-- 			<form-login-page>/public/login.jsp</form-login-page> -->
-<!-- 			<form-error-page>/public/login.jsp?error=true</form-error-page> -->
-<!-- 		</form-login-config> -->
-<!-- 	</login-config> -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>CustomRealm</realm-name>
+		<form-login-config>
+			<form-login-page>/public/login.jsp</form-login-page>
+			<form-error-page>/public/login.jsp?error=true</form-error-page>
+		</form-login-config>
+	</login-config>
 
-		<login-config>
-			<auth-method>DIGEST</auth-method>
-			<realm-name>UserDatabase</realm-name>
-		</login-config>
+<!-- 		<login-config> -->
+<!-- 			<auth-method>DIGEST</auth-method> -->
+<!-- 			<realm-name>UserDatabase</realm-name> -->
+<!-- 		</login-config> -->
 
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>

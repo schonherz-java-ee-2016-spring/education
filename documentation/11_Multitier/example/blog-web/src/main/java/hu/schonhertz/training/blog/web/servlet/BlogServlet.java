@@ -41,7 +41,7 @@ public class BlogServlet extends HttpServlet {
 		blogVo.setText(request.getParameter("text"));
 		blogService.createBlog(blogVo);
 
-		resp.setContentType("application/json");
+		resp.setContentType("text/html");
 		resp.setStatus(HttpServletResponse.SC_OK);
 		resp.getWriter().write("OK");
 
