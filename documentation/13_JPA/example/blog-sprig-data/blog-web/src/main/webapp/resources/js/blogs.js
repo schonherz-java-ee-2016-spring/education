@@ -46,26 +46,48 @@ function getBlogs() {
 
 	});
 
-	dialog = $("#dialog-form").dialog({
-		autoOpen : false,
-		height : 300,
-		width : 350,
-		modal : true,
-		buttons : {
-			"Create a blog" : addBlog,
-			Cancel : function() {
-				dialog.dialog("close");
-			}
+	
+
+}
+
+function searchBlogs() {
+
+	jQuery.ajax({
+		url : "/blog-web/blogSearch",
+		dataType : "json",
+		data : {
+			'size' : $("#pageSize").val(),
+			'page' : 0,
+			'title': $("#searchTitle").val()
 		},
-		close : function() {
-			form[0].reset();
-			allFields.removeClass("ui-state-error");
-		}
+		success : function(data) {
+			$('#blogs').html('');
+			$(data).each(
+					function(index, value) {
+						jQuery.ajax({
+							async : false,
+							url : "/blog-web/resources/template/blog.html",
+							success : function(template) {
+								template = template.replace('#title',
+										value.title);
+								template = template
+										.replace('#text', value.text);
+								template = template.replace('#createDate',
+										value.createDate);
+								template = template.replace('#creater',
+										value.creator.userName);
+								var find = '#id';
+								var re = new RegExp(find, 'g');
+								template = template.replace(re, value.id);
+								$('#blogs').append(template);
+							}
+						});
+					});
+		},
+
 	});
 
-	$("#create-blog").button().on("click", function() {
-		dialog.dialog("open");
-	});
+	
 
 }
 

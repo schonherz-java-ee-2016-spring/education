@@ -18,6 +18,7 @@ import hu.schonhertz.training.blog.entity.Blog;
 import hu.schonhertz.training.blog.repository.BlogRepository;
 import hu.schonhertz.training.blog.service.BlogService;
 import hu.schonhertz.training.blog.service.mapper.BlogMapper;
+import hu.schonhertz.training.blog.vo.BlogSearchResult;
 import hu.schonhertz.training.blog.vo.BlogVo;
 
 @Service
@@ -77,6 +78,19 @@ public class BlogServiceImpl implements BlogService {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 		}
+	}
+
+	@Override
+	public BlogSearchResult searchBlog(String title, Integer page, Integer size) {
+		Sort sort = new Sort(Direction.DESC, "createDate");
+		Pageable pageable = new PageRequest(page, size, sort);
+		Page<Blog> blogsPage = blogRepository.findByTitleContainingIgnoreCase(title, pageable);
+
+		List<BlogVo> vos = BlogMapper.toVo(blogsPage.getContent());
+
+		long totalElements = blogsPage.getTotalElements();
+
+		return new BlogSearchResult(vos, totalElements);
 	}
 
 }

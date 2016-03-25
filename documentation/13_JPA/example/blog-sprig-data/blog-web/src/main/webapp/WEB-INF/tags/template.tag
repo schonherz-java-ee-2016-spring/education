@@ -121,9 +121,9 @@
 				<div class="well">
 					<h4>Blog Search</h4>
 					<div class="input-group">
-						<input type="text" class="form-control"> <span
+						<input type="text" id="searchTitle" class="form-control"> <span
 							class="input-group-btn">
-							<button class="btn btn-default" type="button">
+							<button class="btn btn-default" type="button" id="search" onclick="searchBlogs();">
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</span>
