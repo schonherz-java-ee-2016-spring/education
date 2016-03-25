@@ -12,4 +12,7 @@ public interface BlogService {
 
 	public void createBlog(BlogVo blogVo);
 
+	public List<BlogVo> getAllBlog(Integer page, Integer size);
+
+	public Long countBlog();
 }

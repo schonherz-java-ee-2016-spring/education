@@ -5,6 +5,11 @@ import java.util.List;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +38,25 @@ public class BlogServiceImpl implements BlogService {
 			logger.error(e.getMessage(), e);
 		}
 		return BlogMapper.toVo(blogs);
+	}
+
+	@Override
+	public List<BlogVo> getAllBlog(Integer page, Integer size) {
+		Page<Blog> blogs = null;
+		try {
+			Sort sort = new Sort(Direction.DESC, "createDate");
+			Pageable pageable = new PageRequest(page, size, sort);
+			blogs = blogRepository.findAll(pageable);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+		}
+		return BlogMapper.toVo(blogs.getContent());
+	}
+
+	@Override
+	public Long countBlog() {
+
+		return blogRepository.count();
 	}
 
 	@Override

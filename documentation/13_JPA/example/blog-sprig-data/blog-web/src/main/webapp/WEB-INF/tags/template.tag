@@ -74,7 +74,7 @@
 				<ul class="nav navbar-nav">
 					<c:if test="${ pageContext.request.userPrincipal == null  }">
 						<li><a href="<c:url value="/pages/login.jsp"/>">Login</a></li>
-						<li><a href="<c:url value="/pages/registration.jsp"/>">Singin</a></li>
+						<li><a href="<c:url value="/pages/registration.jsp"/>">SignUp</a></li>
 					</c:if>
 					<c:if test="${ pageContext.request.userPrincipal != null  }">
 						<li><a href="<c:url value="/logout"/>">Logout</a></li>

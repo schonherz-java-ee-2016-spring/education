@@ -1,5 +1,19 @@
 $(document).ready(function() {
+	var old = $('#oldPageSize').val();
+	if (old) {
+		$('#pageSize').val(old);
+	}
+	
+	var cp= $('#currentPage').val();
+
+	if(cp ==0){
+		$('#next').hide();
+	}else{
+		$('#next').show();	
+	}
+	
 	getBlogs();
+
 });
 
 function getBlogs() {
@@ -7,23 +21,33 @@ function getBlogs() {
 	jQuery.ajax({
 		url : "/blog-web/blog",
 		dataType : "json",
+		data : {
+			'size' : $("#pageSize").val(),
+			'page' : ($("#currentPage").val() ? $("#currentPage").val() : 0),
+		},
 		success : function(data) {
 			$('#blogs').html('');
-			$(data).each(function(index, value) {
-				jQuery.ajax({
-					url : "/blog-web/resources/template/blog.html",
-					success : function(template) {
-						template = template.replace('#title', value.title);
-						template = template.replace('#text', value.text);
-						template = template.replace('#createDate', value.createDate);
-						template = template.replace('#creater', value.creator.userName);
-						var find = '#id';
-						var re = new RegExp(find, 'g');
-						template = template.replace(re, value.id);
-						$('#blogs').append(template);
-					}
-				});
-			});
+			$(data).each(
+					function(index, value) {
+						jQuery.ajax({
+							async : false,
+							url : "/blog-web/resources/template/blog.html",
+							success : function(template) {
+								template = template.replace('#title',
+										value.title);
+								template = template
+										.replace('#text', value.text);
+								template = template.replace('#createDate',
+										value.createDate);
+								template = template.replace('#creater',
+										value.creator.userName);
+								var find = '#id';
+								var re = new RegExp(find, 'g');
+								template = template.replace(re, value.id);
+								$('#blogs').append(template);
+							}
+						});
+					});
 		},
 
 	});
@@ -67,4 +91,17 @@ function addBlog() {
 			dialog.dialog("close");
 		}
 	});
+}
+
+function page(p) {
+	var cp= $('#currentPage').val();
+	$('#currentPage').val(new Number(cp) + p);
+	
+	if(cp ==0){
+		$('#next').hide();
+	}else{
+		$('#next').show();	
+	}
+	getBlogs();
+
 }

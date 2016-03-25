@@ -40,15 +40,24 @@ public class BlogServlet extends HttpServlet {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 
-
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
 		String parameter = request.getParameter("blogId");
+		String page = request.getParameter("page");
+		String size = request.getParameter("size");
 
 		if (StringUtils.isEmpty(parameter)) {
-			List<BlogVo> blogVos = blogService.getAllBlog();
+			Integer sizeInt = Integer.valueOf(size);
+
+			Integer pageValue = Integer.valueOf(page);
+			List<BlogVo> blogVos = blogService.getAllBlog(pageValue, sizeInt);
+
+			Long blogSize = blogService.countBlog();
+
+			request.getSession().setAttribute("pageSize", sizeInt);
+			request.getSession().setAttribute("blogSize", blogSize);
+			request.getSession().setAttribute("currentPage", pageValue);
 
 			resp.setContentType("application/json");
 			resp.setStatus(HttpServletResponse.SC_OK);
