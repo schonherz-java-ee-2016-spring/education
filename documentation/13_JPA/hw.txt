@@ -1,0 +1,5 @@
+Kijavítani a meglévõ funkciókat.
+Kategóriákat vezessük be. Suggest megoldás az új blognál (ajax).
+Admin felület ahol jogokat lehet hozzárendelni.
+Regisztráció képet felvenni a userhez. 
+ 
