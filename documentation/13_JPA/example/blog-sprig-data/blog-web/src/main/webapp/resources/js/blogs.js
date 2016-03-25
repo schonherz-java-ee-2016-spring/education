@@ -103,4 +103,14 @@ function checkPage(){
 	}else{
 		$('#next').show();	
 	}
+	var size= $('#blogSize').val();
+	var pagesize= $("#pageSize").val();
+	
+	var max = Math.ceil(size/pagesize)-1;
+	
+	if(cp ==max){
+		$('#previous').hide();
+	}else{
+		$('#previous').show();	
+	}
 }

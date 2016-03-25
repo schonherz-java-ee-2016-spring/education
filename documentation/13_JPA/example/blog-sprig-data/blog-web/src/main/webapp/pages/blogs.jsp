@@ -17,7 +17,7 @@
         <h1 class="page-header"> Blog <small> Sport</small>
         
         <select id="pageSize" class="form-control"
-				onchange="getBlogs();" style="float: right; width: 70px;">
+				onchange="checkPage();getBlogs();" style="float: right; width: 70px;">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="10">10</option>
@@ -32,7 +32,7 @@
 	<div id="blogs" class="text_padding"></div>
 	  <ul class="pager">
            <li class="previous">
-               <a href="#" onclick="page(1); ">&larr; Older</a>
+               <a href="#" id="previous" onclick="page(1); ">&larr; Older</a>
            </li>
            <li class="next" >
                <a href="#" id="next" onclick="page(-1); ">Newer &rarr;</a>
