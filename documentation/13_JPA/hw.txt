@@ -1,5 +1,7 @@
 Kijavítani a meglévõ funkciókat.
 Kategóriákat vezessük be. Suggest megoldás az új blognál (ajax).
 Admin felület ahol jogokat lehet hozzárendelni.
-Regisztráció képet felvenni a userhez. 
+Regisztráció képet felvenni a userhez.
+
+hátáridõ:   2016.április.4. 23:59
  
