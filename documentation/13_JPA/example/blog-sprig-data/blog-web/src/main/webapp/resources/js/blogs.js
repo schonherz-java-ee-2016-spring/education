@@ -4,13 +4,7 @@ $(document).ready(function() {
 		$('#pageSize').val(old);
 	}
 	
-	var cp= $('#currentPage').val();
-
-	if(cp ==0){
-		$('#next').hide();
-	}else{
-		$('#next').show();	
-	}
+	 checkPage();
 	
 	getBlogs();
 
@@ -96,12 +90,17 @@ function addBlog() {
 function page(p) {
 	var cp= $('#currentPage').val();
 	$('#currentPage').val(new Number(cp) + p);
+	 checkPage();
+	getBlogs();
+
+}
+
+function checkPage(){
+	var cp= $('#currentPage').val();
 	
 	if(cp ==0){
 		$('#next').hide();
 	}else{
 		$('#next').show();	
 	}
-	getBlogs();
-
 }
