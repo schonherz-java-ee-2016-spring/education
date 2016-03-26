@@ -1,0 +1,9 @@
+JSF login képernyo + JDBC (Opcionálisan sima vagy Spring)
+
+0. User objektumok létrehozása adattagokkal (id,userName,password,email.address,userType(Admin,Guest,Normal)), JDBCDao, pár User feltöltése
+1. Validator,Converter használata
+2. ManagedBeanek használata
+3. Standard JSF navigáció használata sikeres bejelentkezés esetén
+4. Üzenetek megjelenítése a sikeres bejelentkezésrol
+
+Határido: 2016.04.08. 23:59:59
