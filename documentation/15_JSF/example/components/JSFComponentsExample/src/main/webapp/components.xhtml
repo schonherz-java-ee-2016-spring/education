@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="common.js" target="head" />
+</h:head>
+
+<h:body>
+	<h1>JSF 2 components example</h1>
+
+	<h:form id="testForm">
+		<table>
+			<tr>
+				<td>(InputText)UserName:</td>
+				<td><h:inputText id="inputText" value="#{userSession.userName}" /></td>
+			</tr>
+			<tr>
+				<td valign="top">(InputTextarea)Address :</td>
+				<td><h:inputTextarea id="inputTextArea"
+						value="#{userSession.address}" cols="30" rows="10" /></td>
+			</tr>
+			<tr>
+				<td>(InputSecret)Password :</td>
+				<td><h:inputSecret id="inputSecret"
+						value="#{userSession.password}" /></td>
+			</tr>
+			<tr>
+				<td>(Inputhidden)Hidden Value:</td>
+				<td><h:inputHidden value="#{userSession.hiddenInfo}"
+						id="inputHidden" /></td>
+			</tr>
+			<tr>
+				<td>(SelectBooleanCheckbox)Sign up for newsletter:</td>
+				<td><h:selectBooleanCheckbox id="singleCheckbox"
+						value="#{userSession.newsLetter}" /></td>
+			</tr>
+			<tr>
+				<td>(SelectManyCheckbox) with Hard-coded values using
+					"f:selectItem" :</td>
+				<td><h:selectManyCheckbox id="multiCheckbox"
+						value="#{userSession.propertiesHardCoded}">
+						<f:selectItem itemValue="1" itemLabel="DatabaseName" />
+						<f:selectItem itemValue="2" itemLabel="JDBCDriver" />
+						<f:selectItem itemValue="3" itemLabel="DatabaseURL" />
+						<f:selectItem itemValue="4" itemLabel="DatabaseUser" />
+						<f:selectItem itemValue="5" itemLabel="DatabasePass" />
+					</h:selectManyCheckbox></td>
+			</tr>
+			<tr>
+				<td>(SelectManyCheckbox) with Array:</td>
+				<td><h:selectManyCheckbox id="multiCheckboxWithArray"
+						value="#{userSession.selectedUsers}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectManyCheckbox></td>
+			</tr>
+			<tr>
+				<td>(SelectManyCheckbox) with Map:</td>
+				<td><h:selectManyCheckbox id="multiCheckboxWithMap"
+						value="#{userSession.propertiesWithMap}">
+						<f:selectItems value="#{userSession.propertiesMap}" var="prop"
+							itemValue="#{prop['userName']}" itemLabel="#{prop}" />
+					</h:selectManyCheckbox></td>
+			</tr>
+			<tr>
+				<td>(SelectOneRadio) with Array (Map and Object also the same):</td>
+				<td><h:selectOneRadio id="selectOneRadioWithArray"
+						value="#{userSession.selectedUserByRadio}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectOneRadio></td>
+			</tr>
+			<tr>
+				<td>(SelectOneListBox) with Array (Map and Object also the
+					same):</td>
+				<td><h:selectOneListbox id="selectOneListboxWithArray"
+						value="#{userSession.selectedUserByListbox}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectOneListbox></td>
+			</tr>
+			<tr>
+				<td>(SelectManyListbox) with Array (Map and Object also the
+					same):</td>
+				<td><h:selectManyListbox id="manyListboxWithArray"
+						value="#{userSession.selectedUsersByManyListbox}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectManyListbox></td>
+			</tr>
+			<tr>
+				<td>(SelectOneMenu) with Array (Map and Object also the same):</td>
+				<td><h:selectOneMenu id="selectOneMenuWithArray"
+						value="#{userSession.selectedUserByOnemenu}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td>(SelectManyMenu) with Array (Map and Object also the same):</td>
+				<td><h:selectManyListbox id="manyMenuWithArray"
+						value="#{userSession.selectedUsersByManymenu}">
+						<f:selectItems value="#{userSession.userArray}" var="user"
+							itemValue="#{user.userName}" itemLabel="#{user.userName}" />
+					</h:selectManyListbox></td>
+			</tr>
+			<tr>
+				<td>OutputText</td>
+				<td>
+					<ol>
+						<li>#{userSession.outputTextString}</li>
+						<li><h:outputText value="#{userSession.outputTextString}"
+								styleClass="red" /></li>
+						<li><h:outputText value="#{userSession.outputTextString}" /></li>
+						<li><h:outputText value="#{userSession.outputTextString}"
+								styleClass="red" escape="false" /></li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>OutputFormat</td>
+				<td>
+					<ol>
+						<li><h:outputFormat
+								value="this is param 0 : {0}, param 1 : {1}">
+								<f:param value="Number 1" />
+								<f:param value="Number 2" />
+							</h:outputFormat></li>
+						<li><h:outputFormat value="#{userSession.outputFormatText}">
+								<f:param value="Jani" />
+							</h:outputFormat></li>
+
+						<li><h:outputFormat value="#{userSession.outputFormatHtml}">
+								<f:param value="text" />
+								<f:param value="size='30'" />
+								<f:param value="'Jani'" />
+							</h:outputFormat></li>
+
+						<li><h:outputFormat value="#{userSession.outputFormatHtml}"
+								escape="false">
+								<f:param value="text" />
+								<f:param value="size='30'" />
+								<f:param value="Jani" />
+							</h:outputFormat></li>
+
+						<li><h:outputFormat value="#{userSession.outputFormatHtml}"
+								escape="false">
+								<f:param value="button" />
+								<f:param value="value='Click Me'" />
+							</h:outputFormat></li>
+
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>GraphicImage</td>
+				<td>
+					<ol>
+						<li>Normal way - <h:graphicImage width="200"
+								value="resources/images/sc2.jpg" /></li>
+						<li>Library way - <h:graphicImage width="200"
+								library="images" name="sc2cat.jpg" />
+						</li>
+						<li>External way - <h:graphicImage width="200"
+								value="http://diablo3.hu/avatars/diablo%203%20logo%20dark%203.jpg" />
+						</li>
+
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>Outputstylesheet</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Outputscript</td>
+				<td>
+					<button onclick="displaySomething()">Click Me</button>
+				</td>
+			</tr>
+			<tr>
+				<td>Button, CommandButton</td>
+				<td>
+					<ol>
+						<li><h:commandButton value="CommandButton Action Call"
+								type="submit" action="#{userSession.doAction}" /></li>
+						<li><h:commandButton value="CommandButton Reset Inputs"
+								type="reset" /></li>
+						<li><h:commandButton value="HTML Button" type="button" /></li>
+						<li><h:commandButton value="CommandButton as HTML Button"
+								type="button" onclick="alert('h:commandButton');" /></li>
+						<li><h:button value="buton" /></li>
+						<li><h:button value="Click Me" onclick="alert('h:button');" />
+						</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td>Link,CommandLink,OutputLink</td>
+				<td>
+					<ol>
+						<li><h:link value="Login page" outcome="login" /></li>
+						<li><h:link value="Login page + Param " outcome="login">
+								<f:param name="username" value="Jani" />
+							</h:link></li>
+						<li><h:link outcome="login">
+								<h:graphicImage library="images" width="100" name="sc2cat.jpg" />
+							</h:link></li>
+
+						<li><h:commandLink value="Login page" /></li>
+						<li><h:commandLink action="#{userSession.goLoginPage}"
+								value="Login page" /></li>
+						<li><h:commandLink action="#{userSession.goLoginPage}"
+								value="Login page + Param ">
+								<f:param name="username" value="Jani" />
+							</h:commandLink></li>
+						<li><h:commandLink action="#{userSession.goLoginPage}">
+								<h:graphicImage library="images" width="100" name="sc2cat.jpg" />
+							</h:commandLink></li>
+						<li><h:outputLink>
+	    			Login page
+	    		</h:outputLink></li>
+						<li><h:outputLink value="login.xhtml">
+	    			Login page
+	    		</h:outputLink></li>
+						<li><h:outputLink value="login.xhtml">
+								<h:outputText value="Login page" />
+								<f:param name="username" value="Jani" />
+							</h:outputLink></li>
+						<li><h:outputLink value="login.xhtml">
+								<h:graphicImage library="images" width="100" name="sc2cat.jpg" />
+							</h:outputLink></li>
+					</ol>
+
+				</td>
+			</tr>
+		</table>
+		<h:commandButton value="Submit" render=":result" />
+	</h:form>
+	<hr />
+	<h:panelGroup id="result">
+		<table>
+			<tr>
+				<td>Submitted value for inputText:</td>
+				<td><h:outputText value="#{userSession.userName}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for inputTextarea:</td>
+				<td><h:outputText value="#{userSession.address}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for inputSecret:</td>
+				<td><h:outputText value="#{userSession.password}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for inputSecret:</td>
+				<td><h:outputText value="#{userSession.hiddenInfo}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectBooleanCheckbox:</td>
+				<td><h:outputText value="#{userSession.newsLetter}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectManyCheckbox (Hard-coded):</td>
+				<td><ui:repeat var="property"
+						value="#{userSession.propertiesHardCoded}">
+						<h:outputText value="[#{property}]" />
+					</ui:repeat></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectManyCheckbox (Array):</td>
+				<td><ui:repeat var="user" value="#{userSession.selectedUsers}">
+						<h:outputText value="[#{user}]" />
+					</ui:repeat></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectManyCheckbox (Map):</td>
+				<td><ui:repeat var="property"
+						value="#{userSession.propertiesWithMap}">
+						<h:outputText value="[#{property}]" />
+					</ui:repeat></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectOneRadio (Array):</td>
+				<td><h:outputText value="#{userSession.selectedUserByRadio}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectOneListbox (Array):</td>
+				<td><h:outputText value="#{userSession.selectedUserByListbox}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectManyListbox (Array):</td>
+				<td><ui:repeat var="user"
+						value="#{userSession.selectedUsersByManyListbox}">
+						<h:outputText value="[#{user}]" />
+					</ui:repeat></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectOneMenu (Array):</td>
+				<td><h:outputText value="#{userSession.selectedUserByOnemenu}" /></td>
+			</tr>
+			<tr>
+				<td>Submitted value for SelectManyMenu (Array):</td>
+				<td><ui:repeat var="user"
+						value="#{userSession.selectedUsersByManymenu}">
+						<h:outputText value="[#{user}]" />
+					</ui:repeat></td>
+			</tr>
+		</table>
+
+	</h:panelGroup>
+</h:body>
+</html>

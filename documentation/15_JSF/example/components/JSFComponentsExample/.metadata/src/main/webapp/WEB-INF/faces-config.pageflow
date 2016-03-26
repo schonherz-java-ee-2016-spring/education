@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12839225897960" configfile="/JavaServerFaces/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf128430768814314" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf145893841443424 pf145893841443425 pf145893841443426" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="page2.xhtml" x="122" y="562" id="pf128430768814316" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="page2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="start.xhtml" x="122" y="946" id="pf14589362245612" referenceLink="//@navigationRule.0/@fromViewId|" path="start.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conditional-navigation/ordermore.xhtml" x="338" y="946" id="pf14589364002448" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf145893816972911" path="/conditional-navigation/ordermore.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conditional-navigation/payment.xhtml" x="338" y="1330" id="pf14589364002449" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf145893816972912" path="/conditional-navigation/payment.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conditional-navigation/register.xhtml" x="338" y="1714" id="pf145893640024410" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf145893816972914" path="/conditional-navigation/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conditional-navigation/start.xhtml" x="122" y="1330" id="pf145893816972916" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf145893816972911 pf145893816972912 pf145893816972914" path="/conditional-navigation/start.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="components.xhtml" id="pf145893841443427" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf145893841443424" path="/components.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="converters.xhtml" id="pf145893841443428" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf145893841443425" path="/converters.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="validators.xhtml" id="pf145893841443429" referenceLink="//@navigationRule.1/@navigationCase.2/@toViewId|" inlinks="pf145893841443426" path="/validators.xhtml"/>
+  <links id="pf145893816972911" target="pf14589364002448" source="pf145893816972916" outcome="payment"/>
+  <links id="pf145893816972912" target="pf14589364002449" source="pf145893816972916" outcome="payment"/>
+  <links id="pf145893816972914" target="pf145893640024410" source="pf145893816972916" outcome="payment"/>
+  <links id="pf145893841443424" target="pf145893841443427" source="pf128430768814314" outcome="components"/>
+  <links id="pf145893841443425" target="pf145893841443428" source="pf128430768814314" outcome="converters"/>
+  <links id="pf145893841443426" target="pf145893841443429" source="pf128430768814314" outcome="validators"/>
+</pageflow:Pageflow>

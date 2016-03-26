@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<application>
+		<locale-config>
+			<default-locale>hu_HU</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>welcome</base-name>
+			<var>i18n</var>
+		</resource-bundle>
+
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+
+	<navigation-rule>
+		<from-view-id>/conditional-navigation/start.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>payment</from-outcome>
+			<if>#{paymentController.orderQty &lt; 100}</if>
+			<to-view-id>/conditional-navigation/ordermore.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>payment</from-outcome>
+			<if>#{paymentController.registerCompleted}</if>
+			<to-view-id>/conditional-navigation/payment.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>payment</from-outcome>
+			<to-view-id>/conditional-navigation/register.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>components</from-outcome>
+			<to-view-id>/components.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>converters</from-outcome>
+			<to-view-id>/converters.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>validators</from-outcome>
+			<to-view-id>/validators.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
