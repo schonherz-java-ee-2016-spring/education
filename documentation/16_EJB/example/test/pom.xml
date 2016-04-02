@@ -12,7 +12,16 @@
 		<module>ejb-interface</module>
 		<module>web</module>
 	</modules>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
