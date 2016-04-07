@@ -34,12 +34,7 @@
 			<version>${version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>hu.neuron.java</groupId>
-			<artifactId>jms-service-client-api</artifactId>
-			<version>${version}</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>hu.neuron.java</groupId>
 			<artifactId>core</artifactId>
