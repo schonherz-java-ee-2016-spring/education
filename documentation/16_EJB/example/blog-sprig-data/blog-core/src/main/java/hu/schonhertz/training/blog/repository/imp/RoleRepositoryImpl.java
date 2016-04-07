@@ -1,0 +1,27 @@
+package hu.schonhertz.training.blog.repository.imp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import hu.schonhertz.training.blog.entity.User;
+import hu.schonhertz.training.blog.repository.RoleRepository;
+import hu.schonhertz.training.blog.repository.RoleRepositoryCustom;
+import hu.schonhertz.training.blog.repository.UserRepository;
+
+@Transactional(propagation = Propagation.REQUIRED)
+public class RoleRepositoryImpl implements RoleRepositoryCustom {
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	RoleRepository roleRepository;
+
+	@Override
+	public void removeRoleFromUser(Long roleId, Long userId) throws Exception {
+		User user = userRepository.findOne(userId);
+		user.getRoles().remove(roleRepository.findOne(roleId));
+		userRepository.save(user);
+	}
+
+}
