@@ -1,14 +1,9 @@
 package hu.neuron.java.core.test;
 
-import java.awt.Event;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.net.URL;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -36,9 +31,9 @@ import hu.schonherz.java.entities.User;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @Transactional
 @TransactionConfiguration(defaultRollback = false)
-public class DataGenerate {
+public class DataGenerateTest {
 
-	private static final Logger logger = Logger.getLogger(DataGenerate.class);
+	private static final Logger logger = Logger.getLogger(DataGenerateTest.class);
 
 	@Autowired
 	UserDao userDao;
