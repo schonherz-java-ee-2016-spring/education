@@ -54,6 +54,7 @@ public class DataGenerateTest {
 
 			JsonReader jsonReader = new JsonReader();
 			JSONObject json = jsonReader.readJsonFromUrl("https://randomuser.me/api/?results=20");
+			logger.debug(json.toString());
 			JSONArray array = json.getJSONArray("results");
 			for (int i = 0; i < array.length(); i++) {
 				JSONObject jsonObject = array.getJSONObject(i);
