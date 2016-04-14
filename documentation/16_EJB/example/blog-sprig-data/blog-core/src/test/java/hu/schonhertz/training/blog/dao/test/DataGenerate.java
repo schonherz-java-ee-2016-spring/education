@@ -71,7 +71,7 @@ public class DataGenerate {
 			ArrayList<User> users = new ArrayList<>();
 
 			JsonReader jsonReader = new JsonReader();
-			JSONObject json = jsonReader.readJsonFromUrl("https://randomuser.me/api/?results=20");
+			JSONObject json = jsonReader.readJsonFromUrl("http://api.randomuser.me/0.8/?results=20");
 			JSONArray array = json.getJSONArray("results");
 			for (int i = 0; i < array.length(); i++) {
 				JSONObject jsonObject = array.getJSONObject(i);

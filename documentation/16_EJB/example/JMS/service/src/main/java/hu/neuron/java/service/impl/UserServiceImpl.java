@@ -44,11 +44,9 @@ public class UserServiceImpl implements UserServiceLocal, UserServiceRemote {
 	@Override
 	public UserVO registrationUser(UserVO userVO) throws Exception {
 
-		User user = userDao.save(UserConverter.toEntity(userVO));
-		List<Role> roles = user.getRoles();
-		if (roles == null || roles.isEmpty()) {
-			roles = new ArrayList<>();
-		}
+		User user = UserConverter.toEntity(userVO);
+
+		List<Role> roles = new ArrayList<>();
 
 		Role role = getUserRole();
 
@@ -68,6 +66,7 @@ public class UserServiceImpl implements UserServiceLocal, UserServiceRemote {
 			role = new Role();
 			role.setName("USER_ROLE");
 			role = roleDao.save(role);
+
 		}
 		return role;
 	}

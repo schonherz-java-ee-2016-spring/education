@@ -1,6 +1,7 @@
 package hu.neuron.java.service.vo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserVO implements Serializable {
@@ -79,4 +80,14 @@ public class UserVO implements Serializable {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "UserVO [username=" + username + ", password=" + password + ", roles=" + roles + ", image="
+				+ Arrays.toString(image) + ", id=" + id + "]";
+	}
+
 }

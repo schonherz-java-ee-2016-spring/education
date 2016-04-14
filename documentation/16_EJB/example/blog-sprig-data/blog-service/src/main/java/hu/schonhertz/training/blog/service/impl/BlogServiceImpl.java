@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.interceptor.Interceptors;
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -26,7 +26,7 @@ import hu.schonhertz.training.blog.vo.BlogSearchResult;
 import hu.schonhertz.training.blog.vo.BlogVo;
 
 @Stateless(name = "BlogServiceImpl")
-@Transactional(value = TxType.REQUIRED)
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Local(BlogService.class)
 @Interceptors({ SpringBeanAutowiringInterceptor.class })
 public class BlogServiceImpl implements BlogService {
