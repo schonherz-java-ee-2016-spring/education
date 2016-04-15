@@ -93,21 +93,21 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>*</version>
+			<version>4.2.5.RELEASE</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>*</version>
+			<version>4.1.6.RELEASE</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>aopalliance</groupId>
 			<artifactId>aopalliance</artifactId>
-			<version>*</version>
+			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -125,7 +125,7 @@
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>spring-faces</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
