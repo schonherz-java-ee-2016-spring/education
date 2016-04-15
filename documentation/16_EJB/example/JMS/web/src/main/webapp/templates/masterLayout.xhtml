@@ -27,13 +27,13 @@
 			rel="stylesheet" />
 		<h:outputStylesheet library="default" name="css/custom.css"
 			rel="stylesheet" />
-			
-				<h:outputStylesheet library="default" name="css/bootstrap-social.css"
+
+		<h:outputStylesheet library="default" name="css/bootstrap-social.css"
 			rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans'
 			rel='stylesheet' type='text/css' />
-			
-			
+
+
 
 		<h:outputScript library="primefaces" name="jquery/jquery.js"
 			target="head" />
@@ -59,11 +59,12 @@
 				style="margin-bottom: 0">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".sidebar-collapse">
+					data-target="#bs-sidebar-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
+
 				<a class="navbar-brand" href="index.html">COMPANY NAME</a>
 			</div>
 
@@ -72,41 +73,47 @@
 				<a href="message-task.html" class="btn btn-info" title="New Message"><b>30
 				</b><i class="fa fa-envelope-o fa-2x"></i></a> <a href="message-task.html"
 					class="btn btn-primary" title="New Task"><b>40 </b><i
-					class="fa fa-bars fa-2x"></i></a> <a href="#{request.contextPath}/logout"
-					class="btn btn-danger" title="Logout"><i
-					class="fa fa-exclamation-circle fa-2x"></i></a>
+					class="fa fa-bars fa-2x"></i></a> <a
+					href="#{request.contextPath}/logout" class="btn btn-danger"
+					title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
 
 			</div>
 			</nav>
 			<!-- /. NAV TOP  -->
-			<nav class="navbar-default navbar-side" role="navigation">
-			<div class="sidebar-collapse">
-				<ul class="nav" id="main-menu">
-					<li><p:outputPanel style="display:block"
-				styleClass="user-img-div"
-				rendered="#{userSessionBean.userVO != null}">
-				<p:graphicImage value="#{userImages.image}"
-					styleClass="img-thumbnail">
-					<f:param name="userId" value="#{userSessionBean.userVO.id}" />
-				</p:graphicImage>
+			<nav class=" navbar-default sidebar" role="navigation">
+			<div class="container-fluid">
 
-				<div class="inner-text">
-					<p:outputLabel
-						value="#{userSessionBean.userVO.username}"></p:outputLabel>
-					<br /> 
+				<div class="collapse navbar-collapse"
+					id="bs-sidebar-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home<span
+								style="font-size: 16px;"
+								class="pull-right showopacity glyphicon glyphicon-home"></span></a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Usuarios <span class="caret"></span><span
+								style="font-size: 16px;"
+								class="pull-right showopacity glyphicon glyphicon-user"></span></a>
+							<ul class="dropdown-menu forAnimate" role="menu">
+								<li><a href="{{URL::to('createusuario')}}">Crear</a></li>
+								<li><a href="#">Modificar</a></li>
+								<li><a href="#">Reportar</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Informes</a></li>
+							</ul></li>
+						<li><a href="#">Libros<span style="font-size: 16px;"
+								class="pull-right showopacity glyphicon glyphicon-th-list"></span></a></li>
+						<li><a href="#">Tags<span style="font-size: 16px;"
+								class="pull-right showopacity glyphicon glyphicon-tags"></span></a></li>
+					
+					<li><a href="#{request.contextPath}/index.xhtml"><span class=" pull-right showopacity fa fa-dashboard "></span>Home</a></li>
+					<li><a href="#{request.contextPath}/secured/messages.xhtml"><span class="pull-right showopacity fa fa-dashboard "></span>Messges</a></li>
+					<li><a href="#{request.contextPath}/public/qeuetest.xhtml"><span class="pull-right showopacity fa fa-dashboard "></span>Qeue test</a></li>
+					</ul>
 				</div>
-			</p:outputPanel></li>
-
-
-
-					<li><a href="#{request.contextPath}/index.xhtml"><i class="fa fa-dashboard "></i>Home</a></li>
-					<li><a href="#{request.contextPath}/secured/messages.xhtml"><i class="fa fa-dashboard "></i>Messges</a></li>
-					<li><a href="#{request.contextPath}/public/qeuetest.xhtml"><i class="fa fa-dashboard "></i>Qeue test</a>
-					</li>
-				</ul>
 			</div>
-
 			</nav>
 			<!-- /. NAV SIDE  -->
 			<div id="page-wrapper">
